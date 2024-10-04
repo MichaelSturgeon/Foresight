@@ -13,4 +13,10 @@ class Post(models.Model):
         ordering = ["-created_on"]
     def __str__(self):
         return f"{self.user} | {self.created_on:%Y-%m-%d %H:%M} | {self.body}"
-         
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    follows = models.ManyToManyField("self", related_name="followed_by", symmetrical=False, blank=True)
+    def __str__(self):
+        return f"{self.user.username}"
