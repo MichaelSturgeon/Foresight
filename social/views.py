@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from .models import Post, Profile
 
@@ -16,5 +16,21 @@ def home(request):
 
 
 def profile_list(request):
-    profiles = Profile.objects.exclude(user=request.user)
-    return render(request, 'social/profile_list.html', {"profiles":profiles})
+    if request.user.is_authenticated:
+
+        profiles = Profile.objects.exclude(user=request.user)
+        return render(request, 'social/profile_list.html', {"profiles":profiles})
+
+    else:
+        # ONCE CREATAED, REDIRECT USER TO LOGIN PAGE
+        return redirect('home')
+
+
+def my_profile(request):
+    if request.user.is_authenticated:
+
+        return render(request, 'social/my_profile.html', {})
+
+    else:
+        # ONCE CREATAED, REDIRECT USER TO LOGIN PAGE
+        return redirect('home')
