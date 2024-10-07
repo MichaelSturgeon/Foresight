@@ -4,5 +4,41 @@
 {% block content %}
 <!-- my_profile.html content starts here -->
 
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-10"></div>
+        <div class="col-2 text-center">
+            <!-- List of users this account follows -->
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h5>Following</h5>
+                </div>
+                <div class="card-body">
+                    {% for follows in my_profile.follows.all %}
+                    <a href="{% url 'my_profile' follows.user.id %}">@{{follows}}</a>
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- List of users following this account -->
+            <div class="card">
+                <div class="card-header">
+                    <h5>Followed By</h5>
+                </div>
+                <div class="card-body">
+                    {% for followed in my_profile.followed_by.all %}
+                    <a href="{% url 'my_profile' followed.user.id %}">@{{followed}}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
 <!-- my_profile.html content ends here -->
 {% endblock %}

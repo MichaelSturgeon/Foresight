@@ -26,10 +26,14 @@ def profile_list(request):
         return redirect('home')
 
 
-def my_profile(request):
+def my_profile(request, pk):
     if request.user.is_authenticated:
 
-        return render(request, 'social/my_profile.html', {})
+        my_profile = Profile.objects.get(user_id=pk)
+
+        return render(request, 'social/my_profile.html', {
+            "my_profile":my_profile,
+        })
 
     else:
         # ONCE CREATAED, REDIRECT USER TO LOGIN PAGE
