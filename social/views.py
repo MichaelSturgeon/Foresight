@@ -29,10 +29,13 @@ def profile_list(request):
 def my_profile(request, pk):
     if request.user.is_authenticated:
 
+        my_posts = Post.objects.filter(user_id=pk).order_by("-created_on")
+
         my_profile = Profile.objects.get(user_id=pk)
 
         return render(request, 'social/my_profile.html', {
             "my_profile":my_profile,
+            "my_posts":my_posts,
         })
 
     else:
