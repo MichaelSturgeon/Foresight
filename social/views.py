@@ -27,27 +27,27 @@ def profile_list(request):
         return redirect('home')
 
 
-# My Profile View
-def my_profile(request, pk):
+# profile_page View
+def profile_page(request, pk):
     if request.user.is_authenticated:
 
-        my_posts = Post.objects.filter(user_id=pk).order_by("-created_on")
-        my_profile = Profile.objects.get(user_id=pk)
+        profile_posts = Post.objects.filter(user_id=pk).order_by("-created_on")
+        profile_page = Profile.objects.get(user_id=pk)
 
         # Follow/ Unfollow form request
         if request.method == "POST":
             user_profile = request.user.profile
             action = request.POST["follow"]
             if action == "unfollow":
-                user_profile.follows.remove(my_profile)
+                user_profile.follows.remove(profile_page)
             else:
-                user_profile.follows.add(my_profile)
+                user_profile.follows.add(profile_page)
             user_profile.save()
 
 
-        return render(request, 'social/my_profile.html', {
-            "my_profile":my_profile,
-            "my_posts":my_posts,
+        return render(request, 'social/profile_page.html', {
+            "profile_page":profile_page,
+            "profile_posts":profile_posts,
         })
 
     else:

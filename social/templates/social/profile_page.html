@@ -2,8 +2,8 @@
 {% load static %}
 
 {% block content %}
-<!-- my_profile.html content starts here -->
-{% if my_profile %}
+<!-- profile_page.html content starts here -->
+{% if profile_page %}
 <div class="container mt-5">
     <div class="row">
         <div class="col">
@@ -12,12 +12,12 @@
                 <div class="card-body">
                     <form method="POST">
                         {% csrf_token %}
-                        {% if my_profile in user.profile.follows.all %}
+                        {% if profile_page in user.profile.follows.all %}
                         <button type="submit" class="btn btn-dark" name="follow" value="unfollow">Unfollow
-                            {{my_profile.user.username}}</button>
+                            {{profile_page.user.username}}</button>
                         {% else %}
                         <button type="submit" class="btn btn-dark" name="follow" value="follow">Follow
-                            {{my_profile.user.username}}</button>
+                            {{profile_page.user.username}}</button>
                         {% endif %}
                     </form>
                 </div>
@@ -27,8 +27,8 @@
     </div>
     <div class="row">
         <div class="col-10">
-            {% for post in my_posts %}
-            <!-- List of post from this user -->
+            {% for post in profile_posts %}
+            <!-- List of post from this profile -->
             <div class="card mb-3">
                 <div class="row g-0">
                     <div class="col-md-2">
@@ -55,8 +55,8 @@
                     <h5>Following</h5>
                 </div>
                 <div class="card-body">
-                    {% for follows in my_profile.follows.all %}
-                    <a href="{% url 'my_profile' follows.user.id %}">@{{follows}}</a>
+                    {% for follows in profile_page.follows.all %}
+                    <a href="{% url 'profile_page' follows.user.id %}">@{{follows}}</a>
                     {% endfor %}
                 </div>
             </div>
@@ -66,8 +66,8 @@
                     <h5>Followed By</h5>
                 </div>
                 <div class="card-body">
-                    {% for followed in my_profile.followed_by.all %}
-                    <a href="{% url 'my_profile' followed.user.id %}">@{{followed}}</a>
+                    {% for followed in profile_page.followed_by.all %}
+                    <a href="{% url 'profile_page' followed.user.id %}">@{{followed}}</a>
                     {% endfor %}
                 </div>
             </div>
@@ -75,5 +75,5 @@
     </div>
 </div>
 {% endif %}
-<!-- my_profile.html content ends here -->
+<!-- profile_page.html content ends here -->
 {% endblock %}

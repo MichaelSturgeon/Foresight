@@ -28,7 +28,7 @@
                     {% if request.user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page"
-                            href="{% url 'my_profile' request.user.id %}">{{user.username}}'s
+                            href="{% url 'profile_page' request.user.id %}">{{user.username}}'s
                             Profile</a>
                     </li>
                     <li class="nav-item">
