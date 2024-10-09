@@ -7,7 +7,7 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col">
-            <div class="card mb-3">
+            <div class="card mb-3 p-3">
                 <img src="" class="card-img-top" alt="placeholder image">
                 <div class="card-body">
                     <form method="POST">
@@ -29,7 +29,7 @@
         <div class="col-10">
             {% for post in profile_posts %}
             <!-- List of post from this profile -->
-            <div class="card mb-3">
+            <div class="card mb-3 p-3">
                 <div class="row g-0">
                     <div class="col-md-2">
                         <img src="{% static 'images/nobody.jpg' %}" class="img-fluid rounded-start" style="width: 50px;"
@@ -56,7 +56,7 @@
                 <div class="card-header">
                     <h5>Following</h5>
                 </div>
-                <div class="card-body">
+                <div class="card-body p-3">
                     {% for follows in profile_page.follows.all %}
                     <a href="{% url 'profile_page' follows.user.id %}">@{{follows}}</a>
                     {% endfor %}
@@ -67,7 +67,7 @@
                 <div class="card-header">
                     <h5>Followed By</h5>
                 </div>
-                <div class="card-body">
+                <div class="card-body p-3">
                     {% for followed in profile_page.followed_by.all %}
                     <a href="{% url 'profile_page' followed.user.id %}">@{{followed}}</a>
                     {% endfor %}

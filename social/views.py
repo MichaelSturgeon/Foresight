@@ -6,17 +6,26 @@ from .forms import PostForm
 # Index View
 def home(request):
     # Paginate post list
-    paginator = Paginator(Post.objects.filter(status=1), 10)
+    paginator = Paginator(Post.objects.all(), 10)
     page_number = request.GET.get('page')
     posts = paginator.get_page(page_number)
 
     # Post form
-    post_form = PostForm()
+    if request.user.is_authenticated:
+        if request.method == "POST":            
+            post_form = PostForm(data=request.POST)
+            if post_form.is_valid():
+                post = post_form.save(commit=False)
+                post.user = request.user
+                post.save()
+                return redirect('home')
+                
+        post_form = PostForm()
 
-    return render(request, 'social/index.html', {
-        "posts":posts,
-        "post_form":post_form,
-    })
+        return render(request, 'social/index.html', {
+            "posts":posts,
+            "post_form":post_form,
+        })
 
 
 # Profile List View
