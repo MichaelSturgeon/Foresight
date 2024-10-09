@@ -1,17 +1,21 @@
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from .models import Post, Profile
+from .forms import PostForm
 
 # Index View
 def home(request):
     # Paginate post list
-    paginator = Paginator(Post.objects.all(), 10)
+    paginator = Paginator(Post.objects.filter(status=1), 10)
     page_number = request.GET.get('page')
     posts = paginator.get_page(page_number)
 
+    # Post form
+    post_form = PostForm()
 
     return render(request, 'social/index.html', {
         "posts":posts,
+        "post_form":post_form,
     })
 
 
@@ -27,7 +31,7 @@ def profile_list(request):
         return redirect('home')
 
 
-# profile_page View
+# Profile Page View
 def profile_page(request, pk):
     if request.user.is_authenticated:
 

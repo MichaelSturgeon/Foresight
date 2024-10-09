@@ -36,7 +36,9 @@
                             alt="placeholder image">
                     </div>
                     <div class="col-md-10 text-center">
-                        <h5 class="card-title">{{post.user}}</h5>
+                        <a href="{% url 'profile_page' post.user.id %}">
+                            <h5 class="card-title">{{post.user}}</h5>
+                        </a>
                     </div>
                 </div>
                 <div class="row g-0">
