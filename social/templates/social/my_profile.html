@@ -3,8 +3,28 @@
 
 {% block content %}
 <!-- my_profile.html content starts here -->
-
+{% if my_profile %}
 <div class="container mt-5">
+    <div class="row">
+        <div class="col">
+            <div class="card mb-3">
+                <img src="" class="card-img-top" alt="placeholder image">
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {% if my_profile in user.profile.follows.all %}
+                        <button type="submit" class="btn btn-dark" name="follow" value="unfollow">Unfollow
+                            {{my_profile.user.username}}</button>
+                        {% else %}
+                        <button type="submit" class="btn btn-dark" name="follow" value="follow">Follow
+                            {{my_profile.user.username}}</button>
+                        {% endif %}
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col-10">
             {% for post in my_posts %}
@@ -20,8 +40,7 @@
                     </div>
                 </div>
                 <div class="row g-0">
-                    <div class="col-md-12">
-                        <div class="card-body"></div>
+                    <div class=" card-body col-md-12">
                         <p class="card-text">{{post.body}}</p>
                         <p class="card-text text-muted">{{post.created_on}}</p>
                     </div>
@@ -55,12 +74,6 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
+{% endif %}
 <!-- my_profile.html content ends here -->
 {% endblock %}
