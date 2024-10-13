@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.core.paginator import Paginator
 from .models import Post, Profile
 from .forms import PostForm
@@ -26,6 +26,19 @@ def home(request):
             "posts":posts,
             "post_form":post_form,
         })
+
+
+# Delete Post Veiw    
+def delete_post(request, pk):
+    if request.user.is_authenticated:
+        post = get_object_or_404(Post, id=pk)
+        if request.user.username == post.user.username:
+            
+            post.delete()
+            return redirect(request.META.get("HTTP_REFERER"))
+
+        else:
+            return redirect('home')            
 
 
 # Profile List View

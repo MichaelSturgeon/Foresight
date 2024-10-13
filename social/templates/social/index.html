@@ -46,11 +46,18 @@
                         <img src="{% static 'images/nobody.jpg' %}" class="img-fluid rounded-start" style="width: 50px;"
                             alt="placeholder image">
                     </div>
-                    <div class="col-md-10 text-center">
+                    <div class="col-md-9 text-center">
                         <a href="{% url 'profile_page' post.user.id %}">
                             <h5 class="card-title">{{post.user}}</h5>
                         </a>
                     </div>
+                    {% if post.user == user %}
+                    <div class="col-md-1 text-center">
+                        <a href="{% url 'delete_post' post.id %}">
+                            <h5 class="card-title">Delete</h5>
+                        </a>
+                    </div>
+                    {% endif %}
                 </div>
                 <div class="row g-0">
                     <div class=" col card-body">

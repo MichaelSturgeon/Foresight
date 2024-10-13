@@ -5,4 +5,5 @@ urlpatterns = [
     path('', views.home, name="home"),
     path('profile_list/', views.profile_list, name="profile_list"),
     path('profile_page/<int:pk>', views.profile_page, name="profile_page"),
+    path('delete_post/<int:pk>', views.delete_post, name="delete_post"),
 ]
