@@ -28,6 +28,25 @@ def home(request):
         })
 
 
+# Edit Post Veiw    
+def edit_post(request, pk):
+    if request.user.is_authenticated:
+        post = get_object_or_404(Post, id=pk)        
+        if request.user.username == post.user.username:
+
+            post_form = PostForm(request.POST or None, instance=post) 
+
+            if request.method == "POST":
+                if post_form.is_valid():
+                    post = post_form.save(commit=False)
+                    post.user = request.user
+                    post.save()
+
+                    return redirect('home')
+            else:
+                return render(request, "social/edit_post.html", {'post_form':post_form, 'post':post})
+
+
 # Delete Post Veiw    
 def delete_post(request, pk):
     if request.user.is_authenticated:

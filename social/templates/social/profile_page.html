@@ -35,15 +35,21 @@
                         <img src="{% static 'images/nobody.jpg' %}" class="img-fluid rounded-start" style="width: 50px;"
                             alt="placeholder image">
                     </div>
-                    <div class="col-md-9 text-center">
+                    <div class="col-md-8 text-center">
                         <a href="{% url 'profile_page' post.user.id %}">
                             <h5 class="card-title">{{post.user}}</h5>
                         </a>
                     </div>
                     {% if post.user == user %}
+                    <!-- Post Edit/ Delete buttons -->
+                    {% if post.user == user %}
+                    <div class="col-md-1 text-center">
+                        <a href="{% url 'edit_post' post.id %}" class="btn btn-success" post_id="{{ post.id }}">Edit</a>
+                    </div>
                     <div class="col-md-1 text-center">
                         <button class="btn btn-danger btn-delete" post_id="{{ post.id }}">Delete</button>
                     </div>
+                    {% endif %}
                     {% endif %}
                 </div>
                 <div class="row g-0">
@@ -85,7 +91,7 @@
 
 <!-- Delete Post Modal -->
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
