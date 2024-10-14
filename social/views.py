@@ -38,7 +38,9 @@ def delete_post(request, pk):
             return redirect(request.META.get("HTTP_REFERER"))
 
         else:
-            return redirect('home')            
+            
+            return redirect('home')
+                      
 
 
 # Profile List View
