@@ -22,7 +22,7 @@ def home(request):
                 
         post_form = PostForm()
         return render(request, 'social/index.html', {"posts":posts,"post_form":post_form,})
-        
+
     else:
         post_form = PostForm()
         return render(request, 'social/index.html', {"posts":posts,"post_form":post_form,})
@@ -57,7 +57,7 @@ def delete_post(request, pk):
             post.delete()
             return redirect(request.META.get("HTTP_REFERER"))
 
-        else:
+    else:
             
             return redirect('home')
                       
@@ -71,7 +71,7 @@ def profile_list(request):
         return render(request, 'social/profile_list.html', {"profiles":profiles})
 
     else:
-        # ONCE CREATAED, REDIRECT USER TO LOGIN PAGE
+        
         return redirect('home')
 
 
@@ -99,5 +99,5 @@ def profile_page(request, pk):
         })
 
     else:
-        # ONCE CREATAED, REDIRECT USER TO LOGIN PAGE
+        
         return redirect('home')
