@@ -34,6 +34,13 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{% url 'profile_list' %}">Socialize</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'account_logout' %}">Logout</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item"></li>
+                    <a class="nav-link active" aria-current="page" href="{% url 'account_login' %}">Login</a>
+                    </li>
                     {% endif %}
                 </ul>
             </div>

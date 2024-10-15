@@ -21,11 +21,12 @@ def home(request):
                 return redirect('home')
                 
         post_form = PostForm()
+        return render(request, 'social/index.html', {"posts":posts,"post_form":post_form,})
+        
+    else:
+        post_form = PostForm()
+        return render(request, 'social/index.html', {"posts":posts,"post_form":post_form,})
 
-        return render(request, 'social/index.html', {
-            "posts":posts,
-            "post_form":post_form,
-        })
 
 
 # Edit Post Veiw    
