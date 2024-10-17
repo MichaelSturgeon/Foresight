@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
 from django.core.paginator import Paginator
 from .models import Post, Profile
 from .forms import PostForm
@@ -18,12 +19,14 @@ def home(request):
                 post = post_form.save(commit=False)
                 post.user = request.user
                 post.save()
+                messages.success(request, ("Your Post Was Successful!"))             
                 return redirect('home')
                 
         post_form = PostForm()
         return render(request, 'social/index.html', {"posts":posts,"post_form":post_form,})
 
     else:
+        messages.success(request, ("You Must Be Logged In To Join The Conversation! Click The Link Above To Login, Or Sign-up For An Account Today!"))
         post_form = PostForm()
         return render(request, 'social/index.html', {"posts":posts,"post_form":post_form,})
 
@@ -42,11 +45,17 @@ def edit_post(request, pk):
                     post = post_form.save(commit=False)
                     post.user = request.user
                     post.save()
-
+                    messages.success(request, ("Your Post Has Been Successfully Updated!"))
                     return redirect('home')
             else:
                 return render(request, "social/edit_post.html", {'post_form':post_form, 'post':post})
+        else:
+            messages.success(request, ("This I'snt Your Post To Edit!"))
+            return redirect('home')
 
+    else:
+        messages.success(request, ("You Must Be Logged In To Complete This Action!"))
+        return redirect('home')
 
 # Delete Post Veiw    
 def delete_post(request, pk):
@@ -55,12 +64,16 @@ def delete_post(request, pk):
         if request.user.username == post.user.username:
             
             post.delete()
+            messages.success(request, ("Your Post Was Successfully Deleted!"))
             return redirect(request.META.get("HTTP_REFERER"))
 
-    else:
-            
+        else:
+            messages.success(request, ("This I'snt Your Post To Delete!"))
             return redirect('home')
-                      
+    else:
+        messages.success(request, ("You Must Be Logged In To Complete This Action!"))
+        return redirect(request.META.get("HTTP_REFERER"))
+
 
 
 # Profile List View
@@ -71,7 +84,7 @@ def profile_list(request):
         return render(request, 'social/profile_list.html', {"profiles":profiles})
 
     else:
-        
+        messages.success(request, ("You Must Be Logged In To View This Content!")) 
         return redirect('home')
 
 
@@ -88,10 +101,12 @@ def profile_page(request, pk):
             action = request.POST["follow"]
             if action == "unfollow":
                 user_profile.follows.remove(profile_page)
+                messages.success(request, (f"You Have Successfully Unfollowed {profile_page.user.username}"))
             else:
                 user_profile.follows.add(profile_page)
+                messages.success(request, (f"You Have Successfully Followed {profile_page.user.username}"))
             user_profile.save()
-
+            
 
         return render(request, 'social/profile_page.html', {
             "profile_page":profile_page,
