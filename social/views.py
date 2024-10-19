@@ -26,7 +26,7 @@ def home(request):
         return render(request, 'social/index.html', {"posts":posts,"post_form":post_form,})
 
     else:
-        messages.success(request, ("You Must Be Logged In To Join The Conversation! Click The Link Above To Login, Or Sign-up For An Account Today!"))
+        messages.info(request, ("You Must Be Logged In To Join The Conversation! Click The Link Above To Login, Or Sign-up For An Account Today!"))
         post_form = PostForm()
         return render(request, 'social/index.html', {"posts":posts,"post_form":post_form,})
 
@@ -50,12 +50,13 @@ def edit_post(request, pk):
             else:
                 return render(request, "social/edit_post.html", {'post_form':post_form, 'post':post})
         else:
-            messages.success(request, ("This I'snt Your Post To Edit!"))
+            messages.error(request, ("This I'snt Your Post To Edit!"))
             return redirect('home')
 
     else:
-        messages.success(request, ("You Must Be Logged In To Complete This Action!"))
+        messages.info(request, ("You Must Be Logged In To Complete This Action!"))
         return redirect('home')
+        
 
 # Delete Post Veiw    
 def delete_post(request, pk):
@@ -68,10 +69,10 @@ def delete_post(request, pk):
             return redirect(request.META.get("HTTP_REFERER"))
 
         else:
-            messages.success(request, ("This I'snt Your Post To Delete!"))
+            messages.error(request, ("This I'snt Your Post To Delete!"))
             return redirect('home')
     else:
-        messages.success(request, ("You Must Be Logged In To Complete This Action!"))
+        messages.info(request, ("You Must Be Logged In To Complete This Action!"))
         return redirect(request.META.get("HTTP_REFERER"))
 
 
@@ -84,7 +85,7 @@ def profile_list(request):
         return render(request, 'social/profile_list.html', {"profiles":profiles})
 
     else:
-        messages.success(request, ("You Must Be Logged In To View This Content!")) 
+        messages.info(request, ("You Must Be Logged In To View This Content!")) 
         return redirect('home')
 
 
@@ -101,7 +102,7 @@ def profile_page(request, pk):
             action = request.POST["follow"]
             if action == "unfollow":
                 user_profile.follows.remove(profile_page)
-                messages.success(request, (f"You Have Successfully Unfollowed {profile_page.user.username}"))
+                messages.info(request, (f"You Have Unfollowed {profile_page.user.username}"))
             else:
                 user_profile.follows.add(profile_page)
                 messages.success(request, (f"You Have Successfully Followed {profile_page.user.username}"))
