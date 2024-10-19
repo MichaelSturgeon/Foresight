@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.core.paginator import Paginator
 from .models import Post, Profile
-from .forms import PostForm
+from .forms import PostForm, ProfileImageForm
 
 # Index View
 def home(request):
@@ -92,26 +92,33 @@ def profile_list(request):
 # Profile Page View
 def profile_page(request, pk):
     if request.user.is_authenticated:
-
         profile_posts = Post.objects.filter(user_id=pk).order_by("-created_on")
         profile_page = Profile.objects.get(user_id=pk)
+        profile_user = Profile.objects.get(user__id=request.user.id)
 
         # Follow/ Unfollow form request
         if request.method == "POST":
             user_profile = request.user.profile
-            action = request.POST["follow"]
+            action = request.POST.get("follow", False)
             if action == "unfollow":
                 user_profile.follows.remove(profile_page)
                 messages.info(request, (f"You Have Unfollowed {profile_page.user.username}"))
-            else:
+            elif action == "follow":
                 user_profile.follows.add(profile_page)
                 messages.success(request, (f"You Have Successfully Followed {profile_page.user.username}"))
             user_profile.save()
+
+        # Upload Profile Image Form
+        profile_image_form = ProfileImageForm(request.POST or None, request.FILES or None, instance=profile_user)
+        if profile_image_form.is_valid():
+            profile_image_form.save()
+            return redirect(request.META.get("HTTP_REFERER"))
             
 
         return render(request, 'social/profile_page.html', {
             "profile_page":profile_page,
             "profile_posts":profile_posts,
+            "profile_image_form":profile_image_form,
         })
 
     else:

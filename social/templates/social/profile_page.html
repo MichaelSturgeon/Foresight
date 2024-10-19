@@ -5,6 +5,16 @@
 <!-- profile_page.html content starts here -->
 {% if profile_page %}
 <div class="container mt-5">
+
+    {% if profile_page.user == user %}
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ profile_image_form.as_p }}
+
+        <button type="submit" name="upload">Save</button>
+    </form>
+    {% endif %}
+
     <div class="row">
         <div class="col">
             <div class="card mb-3 p-3">
@@ -20,7 +30,7 @@
                     <form method="POST">
                         {% csrf_token %}
                         {% if profile_page in user.profile.follows.all %}
-                        <button type="submit" class="btn btn-light" name="follow" value="unfollow">Unfollow
+                        <button type="submit" class="btn btn-secondary" name="follow" value="unfollow">Unfollow
                             {{profile_page.user.username}}</button>
                         {% else %}
                         <button type="submit" class="btn btn-dark" name="follow" value="follow">Follow
