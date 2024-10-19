@@ -10,13 +10,19 @@
             <div class="card mb-3">
                 <div class="row g-0">
                     <div class="col-md-2">
-                        <img src="{% static 'images/nobody.jpg' %}" class="img-fluid rounded-start"
-                            alt="placeholder image">
+                        {% if "placeholder" in profile.profile_image.url  %}
+                        <img src="{% static 'images/nobody.jpg' %}" class="card-img-top" alt="placeholder image"
+                            style="width: 150px;">
+
+                        {% else %}
+                        <img src="{{ profile.profile_image.url }}" class="card-img-top"
+                            alt="{{profile.user.username}}'s profile image" style="width: 150px;">
+                        {% endif %}
                     </div>
                     <div class="col-md-10">
                         <div class="card-body">
                             <h5 class="card-title">{{ profile.user.username }}</h5>
-                            <p class="card-text text-muted">Last updated 3 mins ago</p>
+                            <p class="card-text text-muted">{{ profile.last_active}}</p>
                         </div>
                     </div>
                 </div>
