@@ -5,40 +5,37 @@
 <!-- profile_page.html content starts here -->
 {% if profile_page %}
 <div class="container mt-5">
-
-    {% if profile_page.user == user %}
-    <form action="" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ profile_image_form.as_p }}
-
-        <button type="submit" name="upload">Save</button>
-    </form>
-    {% endif %}
-
     <div class="row">
         <div class="col">
             <div class="card mb-3 p-3">
-                {% if "placeholder" in profile_page.profile_image.url  %}
-                <img src="{% static 'images/nobody.jpg' %}" class="card-img-top" alt="placeholder image"
-                    style="width: 150px;">
+                <!-- Upload Profile Image Modal Launch Button -->
+                {% if profile_page.user == user %}
+                <button class="btn btn-info btn-upload position-absolute top-0 start-0" data-bs-toggle="tooltip"
+                    data-bs-placement="top" data-bs-title="Edit">Edit</button>
+                {% endif %}
 
+                <!-- Profile Image -->
+                {% if "placeholder" in profile_page.profile_image.url  %}
+                <div>
+                    <img src="{% static 'images/nobody.jpg' %}" class="card-img-top" alt="placeholder image"
+                        style="width: 150px;">
+                </div>
                 {% else %}
                 <img src="{{ profile_page.profile_image.url }}" class="card-img-top"
                     alt="{{profile_page.user.username}}'s profile image" style="width: 150px;">
                 {% endif %}
-                <div class="card-body">
-                    <form method="POST">
-                        {% csrf_token %}
-                        {% if profile_page in user.profile.follows.all %}
-                        <button type="submit" class="btn btn-secondary" name="follow" value="unfollow">Unfollow
-                            {{profile_page.user.username}}</button>
-                        {% else %}
-                        <button type="submit" class="btn btn-dark" name="follow" value="follow">Follow
-                            {{profile_page.user.username}}</button>
-                        {% endif %}
-                    </form>
-                </div>
 
+                <!-- Follow/ Unfollow Button -->
+                <form class="mt-3" method="POST">
+                    {% csrf_token %}
+                    {% if profile_page in user.profile.follows.all %}
+                    <button type="submit" class="btn btn-secondary" name="follow" value="unfollow">Unfollow
+                        {{profile_page.user.username}}</button>
+                    {% else %}
+                    <button type="submit" class="btn btn-dark" name="follow" value="follow">Follow
+                        {{profile_page.user.username}}</button>
+                    {% endif %}
+                </form>
             </div>
         </div>
     </div>
@@ -124,9 +121,34 @@
         </div>
     </div>
 </div>
+
+
+<!-- Upload Image Modal -->
+<div class="modal fade" id="profileImageModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="profileImageModalLabel">Select A Profile Image To Upload</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="" method="POST" enctype="multipart/form-data">
+                <div class="modal-body">
+                    {% csrf_token %}
+                    {{ profile_image_form.as_p }}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-dark">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <!-- profile_page.html content ends here -->
 {% endblock %}
 
 {% block extras %}
 <script src="{% static 'js/posts.js' %}"></script>
+<script src="{% static 'js/profilePage.js' %}"></script>
 {% endblock %}
