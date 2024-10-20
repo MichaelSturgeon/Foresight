@@ -16,13 +16,11 @@
 
                 <!-- Profile Image -->
                 {% if "placeholder" in profile_page.profile_image.url  %}
-                <div>
-                    <img src="{% static 'images/nobody.jpg' %}" class="card-img-top" alt="placeholder image"
-                        style="width: 150px;">
-                </div>
+                <img src="{% static 'images/nobody.jpg' %}" width="150" height="150" class="rounded-circle"
+                    alt="placeholder image">
                 {% else %}
-                <img src="{{ profile_page.profile_image.url }}" class="card-img-top"
-                    alt="{{profile_page.user.username}}'s profile image" style="width: 150px;">
+                <img src="{{ profile_page.profile_image.url }}" width="150" height="150" class="rounded-circle"
+                    alt="{{profile_page.user.username}}'s profile image">
                 {% endif %}
 
                 <!-- Follow/ Unfollow Button -->
@@ -46,8 +44,14 @@
             <div class="card mb-3 p-3">
                 <div class="row g-0">
                     <div class="col-md-2">
-                        <img src="{% static 'images/nobody.jpg' %}" class="img-fluid rounded-start" style="width: 50px;"
+                        <!-- Profile Image -->
+                        {% if "placeholder" in profile_page.profile_image.url  %}
+                        <img src="{% static 'images/nobody.jpg' %}" width="50" height="50" class="rounded-circle"
                             alt="placeholder image">
+                        {% else %}
+                        <img src="{{ profile_page.profile_image.url }}" width="50" height="50" class="rounded-circle"
+                            alt="{{profile_page.user.username}}'s profile image">
+                        {% endif %}
                     </div>
                     <div class="col-md-8 text-center">
                         <a href="{% url 'profile_page' post.user.id %}">

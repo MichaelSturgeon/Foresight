@@ -12,8 +12,14 @@
             <div class="card mb-3 p-3 pb-0">
                 <div class="row">
                     <div class="col-md-2">
-                        <img src="{% static 'images/nobody.jpg' %}" class="img-fluid rounded-start" style="width: 50px;"
+                        <!-- Profile Image -->
+                        {% if "placeholder" in user.profile.profile_image.url  %}
+                        <img src="{% static 'images/nobody.jpg' %}" width="50" height="50" class="rounded-circle"
                             alt="placeholder image">
+                        {% else %}
+                        <img src="{{ user.profile.profile_image.url }}" width="50" height="50" class="rounded-circle"
+                            alt="{{user.username}}'s profile image">
+                        {% endif %}
                     </div>
                     <div class="col-md-10 text-center">
                         <h5 class="card-title">{{ user.username }}</h5>
@@ -43,8 +49,14 @@
             <div class="card mb-3 p-3">
                 <div class="row g-0">
                     <div class="col-md-2">
-                        <img src="{% static 'images/nobody.jpg' %}" class="img-fluid rounded-start" style="width: 50px;"
+                        <!-- Profile Image -->
+                        {% if "placeholder" in post.user.profile.profile_image.url  %}
+                        <img src="{% static 'images/nobody.jpg' %}" width="50" height="50" class="rounded-circle"
                             alt="placeholder image">
+                        {% else %}
+                        <img src="{{ post.user.profile.profile_image.url }}" width="50" height="50"
+                            class="rounded-circle" alt="{{post.user.username}}'s profile image">
+                        {% endif %}
                     </div>
                     <div class="col-md-8 text-center">
                         <a href="{% url 'profile_page' post.user.id %}">
