@@ -11,6 +11,7 @@ class PostForm(forms.ModelForm):
             'body': Textarea(attrs={
                 'placeholder': "Share you thoughts!",
                 'rows': 2,
+                'style': 'overflow: hidden'
                 }),
         }
         labels = {

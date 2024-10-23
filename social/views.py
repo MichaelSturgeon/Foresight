@@ -124,3 +124,22 @@ def profile_page(request, pk):
     else:
         
         return redirect('home')
+
+
+# Like Post View
+def post_like(request, pk):
+	if request.user.is_authenticated:
+		post = get_object_or_404(Post, id=pk)
+        
+		if post.likes.filter(id=request.user.id):
+			post.likes.remove(request.user)
+		else:
+			post.likes.add(request.user)
+		
+		return redirect(request.META.get("HTTP_REFERER"))
+
+
+	else:
+		messages.info(request, ("You Must Be Logged In To Like A Post!"))
+		return redirect('home')
+
