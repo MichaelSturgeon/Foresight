@@ -95,23 +95,12 @@ def profile_page(request, pk):
         profile_posts = Post.objects.filter(user_id=pk).order_by("-created_on")
         profile_page = Profile.objects.get(user_id=pk)
         profile_user = Profile.objects.get(user__id=request.user.id)
-
-        # Follow/ Unfollow form request
-        if request.method == "POST":
-            user_profile = request.user.profile
-            action = request.POST.get("follow", False)
-            if action == "unfollow":
-                user_profile.follows.remove(profile_page)
-                messages.info(request, (f"You Have Unfollowed {profile_page.user.username}"))
-            elif action == "follow":
-                user_profile.follows.add(profile_page)
-                messages.success(request, (f"You Have Successfully Followed {profile_page.user.username}"))
-            user_profile.save()
-
+        
         # Upload Profile Image Form
         profile_image_form = ProfileImageForm(request.POST or None, request.FILES or None, instance=profile_user)
         if profile_image_form.is_valid():
             profile_image_form.save()
+            messages.success(request, ("Your Profile Image Was Successfully Updated!"))
             return redirect(request.META.get("HTTP_REFERER"))
             
 
@@ -143,3 +132,28 @@ def post_like(request, pk):
 		messages.info(request, ("You Must Be Logged In To Like A Post!"))
 		return redirect('home')
 
+
+# Unfollow Profile View
+def unfollow(request, pk):
+    if request.user.is_authenticated:
+        profile_page = Profile.objects.get(user_id=pk)
+        request.user.profile.follows.remove(profile_page)
+        request.user.profile.save()
+        messages.info(request, (f"You Have Unfollowed {profile_page.user.username}"))
+        return redirect(request.META.get("HTTP_REFERER"))
+    else:
+        messages.info(request, ("You Must Be Logged In To Unfollow Other Users!"))
+        return redirect('home')
+
+
+# Follow Profile View
+def follow(request, pk):
+    if request.user.is_authenticated:
+        profile_page = Profile.objects.get(user_id=pk)
+        request.user.profile.follows.add(profile_page)
+        request.user.profile.save()
+        messages.success(request, (f"You Have Successfully Followed {profile_page.user.username}"))
+        return redirect(request.META.get("HTTP_REFERER"))
+    else:
+        messages.info(request, ("You Must Be Logged In To Follow Other Users!"))
+        return redirect('home')       

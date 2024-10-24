@@ -9,4 +9,6 @@ urlpatterns = [
     path('delete_post/<int:pk>', views.delete_post, name="delete_post"),
     path('profile_page/delete_post/<int:pk>', views.delete_post, name="delete_post"),
     path('post_like/<int:pk>', views.post_like, name="post_like"),
+    path('follow/<int:pk>', views.follow, name="follow"),
+    path('unfollow/<int:pk>', views.unfollow, name="unfollow"),
 ]

@@ -5,18 +5,18 @@
 <!-- profile_list.html content starts here -->
 <div class="container mt-5">
     <div class="row">
-        <div class="col text-center">
+        <div class="col">
             {% for profile in profiles %}
-            <div class="card mb-3">
-                <div class="row g-0">
+            <div class="card mb-3 p-3">
+                <div class="row mb-3 g-0">
                     <div class="col-md-2">
                         {% if "placeholder" in profile.profile_image.url  %}
-                        <img src="{% static 'images/nobody.jpg' %}" class="card-img-top" alt="placeholder image"
-                            style="width: 150px;">
+                        <img src="{% static 'images/nobody.jpg' %}" class="rounded-circle" alt="placeholder image"
+                            width="150" height="150">
 
                         {% else %}
-                        <img src="{{ profile.profile_image.url }}" class="card-img-top"
-                            alt="{{profile.user.username}}'s profile image" style="width: 150px;">
+                        <img src="{{ profile.profile_image.url }}" class="rounded-circle"
+                            alt="{{profile.user.username}}'s profile image" width="150" height="150">
                         {% endif %}
                     </div>
                     <div class="col-md-10">
@@ -26,6 +26,19 @@
                             </a>
                             <p class="card-text text-muted">{{ profile.last_active}}</p>
                         </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <!-- Follow/ Unfollow Button -->
+                        {% if profile in user.profile.follows.all %}
+                        <a class="btn btn-secondary" href="{% url 'unfollow' profile.user.id %}"><i
+                                class="fa-solid fa-minus"></i> Unfollow</a>
+                        {% else %}
+                        <a class="btn btn-dark" href="{% url 'follow' profile.user.id %}"><i
+                                class="fa-solid fa-plus"></i>
+                            Follow</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
