@@ -27,7 +27,7 @@
                         {% endif %}
                     </div>
                     <div class="col-10 text-center">
-                        <h5 class="card-title">{{ user.username }}</h5>
+                        <h5 class="card-title text-capitalize font-weight-bold">{{ user.username }}</h5>
                     </div>
                     <div class="card-body">
                         <form id="PostForm" method="post">
@@ -36,7 +36,7 @@
                                     {{ post_form | crispy }}
                                     {% csrf_token %}
                                 </div>
-                                <div class="col ">
+                                <div class="col">
                                     <button id="submitButton" type="submit" class="btn btn btn-dark"><i
                                             class="fa-solid fa-paper-plane"></i> Post</button>
                                 </div>
@@ -70,8 +70,6 @@
                             <h5 class="card-title text-capitalize font-weight-bold">{{post.user}}</h5>
                         </a>
                     </div>
-                    <!-- Post Delete button -->
-                    {% if post.user == user %}
                     <div class="col-2 col-sm-1">
                         <!-- Post Delete button -->
                         {% if post.user == user %}
@@ -80,7 +78,6 @@
                             <i class="fa-solid fa-trash"></i></button>
                         {% endif %}
                     </div>
-                    {% endif %}
                 </div>
                 <!-- Post Body/ Content -->
                 <div class="row g-0">
@@ -105,7 +102,7 @@
                 </div>
                 {% endif %}
                 <hr>
-                <div class="row text-muted">
+                <div class="row text-muted g-0">
                     <div class="col-5 col-sm-7 col-md-8 col-xl-9">
                         {% if user in post.likes.all %}
                         <p class="card-text"><a href="{% url 'post_like' post.id %}"><i

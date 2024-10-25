@@ -9,7 +9,7 @@
             <!-- Post being edited -->
             <div class="card mb-3 p-3">
                 <div class="row mb-3 g-0">
-                    <div class="col-md-2">
+                    <div class="col-2">
                         <!-- Profile Image -->
                         {% if "placeholder" in user.profile.profile_image.url  %}
                         <img src="{% static 'images/nobody.jpg' %}" width="50" height="50" class="rounded-circle"
@@ -20,9 +20,9 @@
                         {% endif %}
                     </div>
                     <!-- Post Author -->
-                    <div class="col-md-10 text-center">
+                    <div class="col-10 text-center">
                         <a href="{% url 'profile_page' post.user.id %}">
-                            <h5 class="card-title">{{post.user}}</h5>
+                            <h5 class="card-title text-capitalize font-weight-bold">{{post.user}}</h5>
                         </a>
                     </div>
                 </div>
@@ -35,21 +35,23 @@
                 {% if post.like_counter > 0 %}
                 <div class="row mt-1 mb-1 text-muted">
                     <div class="col">
-                        <small class="card-text"><i class="fa-solid fa-heart"></i> {{post.like_counter}}</small>
+                        <small class="card-text"><i class="fa-solid fa-heart text-danger"></i>
+                            {{post.like_counter}}</small>
                     </div>
                 </div>
                 {% endif %}
-                <div class="row mt-1 text-muted">
-                    <div class="col-8">
+                <hr>
+                <div class="row text-muted g-0">
+                    <div class="col-5 col-sm-7 col-md-8 col-xl-9">
                         {% if user in post.likes.all %}
-                        <small class="card-text"><a href="{% url 'post_like' post.id %}"><i
-                                    class="fa-solid fa-heart-circle-minus"></i> Unlike</a></small>
+                        <p class="card-text"><a href="{% url 'post_like' post.id %}"><i
+                                    class="fa-solid fa-heart-circle-minus"></i> Unlike</a></p>
                         {% else %}
-                        <small class="card-text"><a href="{% url 'post_like' post.id %}"><i
-                                    class="fa-solid fa-heart-circle-plus"></i> Like</a></small>
+                        <p class="card-text"><a href="{% url 'post_like' post.id %}"><i
+                                    class="fa-solid fa-heart-circle-plus"></i> Like</a></p>
                         {% endif %}
                     </div>
-                    <div class="col-4">
+                    <div class="col-7 col-sm-5 col-md-4 col-xl-3">
                         <small class="card-text ">{{post.created_on}}</small>
                     </div>
                 </div>
@@ -62,7 +64,7 @@
             {% if post_form %}
             <div class="card mb-3 p-3 pb-0">
                 <div class="row">
-                    <div class="col-md-2">
+                    <div class="col-2">
                         <!-- Profile Image -->
                         {% if "placeholder" in user.profile.profile_image.url  %}
                         <img src="{% static 'images/nobody.jpg' %}" width="50" height="50" class="rounded-circle"
@@ -72,17 +74,17 @@
                             alt="{{user.username}}'s profile image">
                         {% endif %}
                     </div>
-                    <div class="col-md-10 text-center">
-                        <h5 class="card-title">{{ user.username }}</h5>
+                    <div class="col-10 text-center">
+                        <h5 class="card-title text-capitalize font-weight-bold">{{ user.username }}</h5>
                     </div>
                     <div class="card-body">
-                        <form id="PostForm" method="post" style="margin-top: 1.3em;">
+                        <form id="PostForm" method="post">
                             <div class="row">
-                                <div class="col-12 col-sm-10">
+                                <div class="col-12">
                                     {{ post_form | crispy }}
                                     {% csrf_token %}
                                 </div>
-                                <div class="col col-sm-2 ">
+                                <div class="col">
                                     <button id="submitButton" type="submit" class="btn btn btn-dark"><i
                                             class="fa-solid fa-paper-plane"></i> Update</button>
                                 </div>
