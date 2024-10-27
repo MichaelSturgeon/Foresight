@@ -41,12 +41,14 @@
                     </div>
                     <!-- Following/ Followers Collapse Toggle -->
                     <div class="col-2 col-sm-1">
+                        {% if profile_page.user == user %}
                         <span data-bs-toggle="collapse" data-bs-target="#followsCollapse" aria-expanded="false"
                             aria-controls="followsCollapse">
                             <button class="btn btn-dark" type="button" data-bs-toggle="tooltip" data-bs-placement="top"
                                 data-bs-title="Your Circle"><i
                                     class="fa-solid fa-people-group text-primary"></i></button>
                         </span>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -175,7 +177,7 @@
 <!-- Delete Post Modal -->
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+        <div class="modal-content text-bg-dark">
             <div class="modal-header">
                 <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -195,7 +197,7 @@
 <!-- Upload Image Modal -->
 <div class="modal fade" id="profileImageModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+        <div class="modal-content text-bg-dark">
             <div class="modal-header">
                 <h5 class="modal-title" id="profileImageModalLabel">Select A Profile Image To Upload</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -207,7 +209,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-dark">Save</button>
+                    <button type="submit" class="btn btn-warning">Save</button>
                 </div>
             </form>
         </div>
