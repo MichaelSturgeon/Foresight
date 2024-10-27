@@ -8,12 +8,12 @@
     <div class="row">
         <div class="col">
             <!-- Profile Page Header -->
-            <div class="card mb-3 p-3">
+            <div class="card text-bg-dark mb-3 p-3">
                 <!-- Upload Profile Image Modal Launch Button -->
                 {% if profile_page.user == user %}
-                <button class="btn btn-info btn-upload position-absolute top-0 start-0 rounded-circle m-2"
+                <button class="btn btn-dark btn-upload position-absolute top-0 start-0 rounded-circle m-2"
                     data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit Profile Image"><i
-                        class="fa-solid fa-gear"></i></button>
+                        class="fa-solid fa-gear text-warning"></i></button>
                 {% endif %}
                 <div class="row mb-3">
                     <div class="col">
@@ -31,7 +31,7 @@
                     <div class="col-10 col-sm-11">
                         <!-- Follow/ Unfollow Button -->
                         {% if profile_page in user.profile.follows.all %}
-                        <a class="btn btn-secondary" href="{% url 'unfollow' profile_page.user.id %}"><i
+                        <a class="btn btn-dark" href="{% url 'unfollow' profile_page.user.id %}"><i
                                 class="fa-solid fa-minus"></i> Unfollow</a>
                         {% else %}
                         <a class="btn btn-dark" href="{% url 'follow' profile_page.user.id %}"><i
@@ -43,9 +43,9 @@
                     <div class="col-2 col-sm-1">
                         <span data-bs-toggle="collapse" data-bs-target="#followsCollapse" aria-expanded="false"
                             aria-controls="followsCollapse">
-                            <button class="btn btn-secondary" type="button" data-bs-toggle="tooltip"
-                                data-bs-placement="top" data-bs-title="Your Circle"><i
-                                    class="fa-solid fa-people-group"></i></button>
+                            <button class="btn btn-dark" type="button" data-bs-toggle="tooltip" data-bs-placement="top"
+                                data-bs-title="Your Circle"><i
+                                    class="fa-solid fa-people-group text-primary"></i></button>
                         </span>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
     </div>
     <div class="row collapse" id="followsCollapse">
         <div class="col">
-            <div class="card mb-3 p-3 text-capitalize font-weight-bold">
+            <div class="card text-bg-dark mb-3 p-3 text-capitalize font-weight-bold">
                 <div class="row g-0">
                     <div class="col-12 col-sm-6 mb-3 text-center">
                         <!-- List of users this account follows -->
@@ -66,7 +66,8 @@
                         <div class="row">
                             <div class="col mb-3">
                                 {% for follows in profile_page.follows.all %}
-                                <a href="{% url 'profile_page' follows.user.id %}">{{follows}}</a>
+                                <a class="btn btn-dark btn-outline-light m-1"
+                                    href="{% url 'profile_page' follows.user.id %}">{{follows}}</a>
                                 {% endfor %}
                             </div>
                         </div>
@@ -81,7 +82,8 @@
                         <div class="row">
                             <div class="col">
                                 {% for followed in profile_page.followed_by.all %}
-                                <a href="{% url 'profile_page' followed.user.id %}">{{followed}}</a>
+                                <a class="btn btn-dark btn-outline-light m-1"
+                                    href="{% url 'profile_page' followed.user.id %}">{{followed}}</a>
                                 {% endfor %}
                             </div>
                         </div>
@@ -95,7 +97,7 @@
     <div class="row">
         <div class="col-12">
             {% for post in profile_posts %}
-            <div class="card mb-3 p-3">
+            <div class="card text-bg-dark mb-3 p-3">
                 <div class="row mb-3 g-0">
                     <div class="col-2">
                         <!-- Profile Image -->
@@ -109,54 +111,58 @@
                     </div>
                     <!-- Post Author -->
                     <div class="col-8 col-sm-9 text-center">
-                        <a href="{% url 'profile_page' post.user.id %}">
-                            <h5 class="card-title text-capitalize font-weight-bold">{{post.user}}</h5>
+                        <a class="btn btn-dark" href="{% url 'profile_page' post.user.id %}">
+                            <h5 class="card-title text-capitalize fw-bold">{{post.user}}</h5>
                         </a>
                     </div>
                     <div class="col-2 col-sm-1">
                         <!-- Post Delete button -->
                         {% if post.user == user %}
-                        <button class="btn btn-danger btn-delete" post_id="
+                        <button class="btn btn-dark btn-delete" post_id="
                         {{ post.id }}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete Post">
-                            <i class="fa-solid fa-trash"></i></button>
+                            <i class="fa-solid fa-trash text-danger"></i></button>
                         {% endif %}
                     </div>
                 </div>
                 <!-- Post Body/ Content -->
                 <div class="row g-0">
                     <div class="col-10 col-sm-11">
-                        <p class="card-text">{{post.body}}</p>
+                        <p class="card-text fw-semibold">{{post.body}}</p>
                     </div>
                     <div class="col-2 col-sm-1">
                         <!-- Post Edit button -->
                         {% if post.user == user %}
-                        <a href="{% url 'edit_post' post.id %}" class="btn btn-success" post_id="{{ post.id }}"
+                        <a href="{% url 'edit_post' post.id %}" class="btn btn-dark" post_id="{{ post.id }}"
                             data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit Post">
-                            <i class="fa-solid fa-pen"></i></a>
+                            <i class="fa-solid fa-pen text-success"></i></a>
                         {% endif %}
                     </div>
                 </div>
+                <!-- Like Counter -->
                 {% if post.like_counter > 0 %}
                 <div class="row text-muted">
                     <div class="col">
-                        <small class="card-text"><i class="fa-solid fa-heart text-danger"></i>
+                        <small class="card-text text-light"><i class="fa-solid fa-heart text-danger"></i>
                             {{post.like_counter}}</small>
                     </div>
                 </div>
                 {% endif %}
                 <hr>
+                <!-- Like Button -->
                 <div class="row text-muted g-0">
                     <div class="col-5 col-sm-7 col-md-8 col-xl-9">
                         {% if user in post.likes.all %}
-                        <p class="card-text"><a href="{% url 'post_like' post.id %}"><i
-                                    class="fa-solid fa-heart-circle-minus"></i> Unlike</a></p>
+                        <p class="card-text btn btn-dark"><a class="link-light link-underline-opacity-0"
+                                href="{% url 'post_like' post.id %}"><i class="fa-solid fa-heart-circle-minus"></i>
+                                Unlike</a></p>
                         {% else %}
-                        <p class="card-text"><a href="{% url 'post_like' post.id %}"><i
-                                    class="fa-solid fa-heart-circle-plus"></i> Like</a></p>
+                        <p class="card-text btn btn-dark"><a class="link-light link-underline-opacity-0"
+                                href="{% url 'post_like' post.id %}"><i class="fa-solid fa-heart-circle-plus"></i>
+                                Like</a></p>
                         {% endif %}
                     </div>
-                    <div class="col-7 col-sm-5 col-md-4 col-xl-3">
-                        <small class="card-text ">{{post.created_on}}</small>
+                    <div class="col-7 col-sm-5 col-md-4 col-xl-3 mt-2">
+                        <small class="card-text text-secondary float-end">{{post.created_on}}</small>
                     </div>
                 </div>
             </div>

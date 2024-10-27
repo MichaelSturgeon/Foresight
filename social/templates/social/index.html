@@ -95,6 +95,7 @@
                         {% endif %}
                     </div>
                 </div>
+                <!-- Like Counter -->
                 {% if post.like_counter > 0 %}
                 <div class="row text-muted">
                     <div class="col">
@@ -117,8 +118,8 @@
                                 Like</a></p>
                         {% endif %}
                     </div>
-                    <div class="col-7 col-sm-5 col-md-4 col-xl-3">
-                        <small class="card-text text-light float-end">{{post.created_on}}</small>
+                    <div class="col-7 col-sm-5 col-md-4 col-xl-3 mt-2">
+                        <small class="card-text text-secondary float-end">{{post.created_on}}</small>
                     </div>
                 </div>
             </div>
