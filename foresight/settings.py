@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 from django.contrib.messages import constants as messages
+import cloudinary
 import dj_database_url
 if os.path.isfile('env.py'):
     import env
@@ -65,6 +66,9 @@ EMAIL_FILE_PATH = BASE_DIR / "sent_emails"
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+# Ensure cloudinary uses https
+cloudinary.config(secure=True,)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
