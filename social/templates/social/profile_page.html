@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block title %}
+<title> {{user.username| title}}'s
+    Profile | Foresight</title>
+{% endblock title %}
 
 {% block content %}
 <!-- profile_page.html content starts here -->
