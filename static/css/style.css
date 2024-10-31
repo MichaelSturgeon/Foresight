@@ -27,5 +27,6 @@ i {
 
 /* Accounts panels(Login, Logout, Register, Reset password) */
 .acc-panel {
+    min-width: 300px;
     max-width: 500px;
 }
