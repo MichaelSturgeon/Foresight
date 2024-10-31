@@ -1,6 +1,24 @@
+/* General Styles */
 body {
     background-color: #000000;
     font-family: "Quicksand", sans-serif;
+    font-size: 15px;
+}
+
+h5,
+i {
+    font-size: 18px;
+}
+
+.btn {
+    font-size: 14px;
+}
+
+/* base.html styles */
+.navbar-brand {
+    color: #205781;
+    font-size: 30px;
+    font-weight: 500;
 }
 
 .navbar {
