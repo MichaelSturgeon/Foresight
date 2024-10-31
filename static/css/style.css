@@ -24,3 +24,8 @@ i {
 .navbar {
     color: #000000;
 }
+
+/* Accounts panels(Login, Logout, Register, Reset password) */
+.acc-panel {
+    max-width: 500px;
+}
