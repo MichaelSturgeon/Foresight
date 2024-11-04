@@ -1,6 +1,8 @@
+# Imported Files and Packages
 from django.urls import path
 from . import views
 
+# URL Patterns
 urlpatterns = [
     path('', views.home, name="home"),
     path('profile_list/', views.profile_list, name="profile_list"),
