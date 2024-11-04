@@ -3,6 +3,7 @@ from django.forms import Textarea
 from django import forms
 from .models import Post, Profile
 
+
 # Post Form
 class PostForm(forms.ModelForm):
     """
@@ -18,18 +19,17 @@ class PostForm(forms.ModelForm):
                 'style': 'overflow: hidden'
                 }),
         }
-        labels = {
-            'body':"",
-        }
+        labels = {'body': "", }
+
 
 # Profile Image Form
 class ProfileImageForm(forms.ModelForm):
     """
-    Submits an instance of Profile Image Form to the database :model:`social.Profile`.
+    Submits an instance of Profile Image Form to the database
+    :model:`social.Profile`.
     """
     profile_image = forms.ImageField(label='Profile Picture')
 
     class Meta:
         model = Profile
         fields = ('profile_image', )
-        
