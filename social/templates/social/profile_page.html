@@ -126,7 +126,7 @@
                         {% if post.user == user %}
                         <button class="btn btn-dark btn-delete" post_id="{{ post.id }}" data-bs-toggle="tooltip"
                             data-bs-placement="top" data-bs-title="Delete Post">
-                            <i class="fa-solid fa-trash text-danger"></i></button>
+                            <i class="fa-solid fa-trash text-danger" post_id="{{ post.id }}"></i></button>
                         {% endif %}
                     </div>
                 </div>
