@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}
+<!-- Page Title -->
 <title> {{user.username| title}}'s
     Profile | Foresight</title>
 {% endblock title %}
-
 {% block content %}
 <!-- profile_page.html content starts here -->
 {% if profile_page %}
@@ -63,7 +63,7 @@
             <div class="card text-bg-dark mb-3 p-3 text-capitalize font-weight-bold">
                 <div class="row g-0">
                     <div class="col-12 col-sm-6 mb-3 text-center">
-                        <!-- List of users this account follows -->
+                        <!-- List of Follows -->
                         <div class="row">
                             <div class="col">
                                 <h5><i class="fa-solid fa-person-arrow-up-from-line"></i> Following</h5>
@@ -79,7 +79,7 @@
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 text-center">
-                        <!-- List of users following this account -->
+                        <!-- List of Following -->
                         <div class="row">
                             <div class="col">
                                 <h5><i class="fa-solid fa-person-arrow-down-to-line"></i> Followed By</h5>
@@ -99,7 +99,7 @@
             </div>
         </div>
     </div>
-    <!-- List of post from this profile -->
+    <!-- List of Posts -->
     <div class="row">
         <div class="col-12">
             {% for post in profile_posts %}
@@ -186,10 +186,12 @@
                 <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            <!-- Modal Text -->
             <div class="modal-body">
                 Are you sure you want to delete this post? You can't undo this action.
             </div>
             <div class="modal-footer">
+                <!-- Modal Buttons -->
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <a id="deleteConfirm" href="#" class="btn btn-danger">Delete</a>
             </div>
@@ -206,11 +208,13 @@
                 <h5 class="modal-title" id="profileImageModalLabel">Select A Profile Image To Upload</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            <!-- Upload Button/ Form -->
             <form action="" method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
                     {% csrf_token %}
                     {{ profile_image_form.as_p }}
                 </div>
+                <!-- Modal Buttons -->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-warning">Save</button>
@@ -238,7 +242,7 @@
 </nav>
 <!-- profile_page.html content ends here -->
 {% endblock %}
-
+<!-- Javascript -->
 {% block extras %}
 <script src="{% static 'js/profiles.js' %}"></script>
 <script src="{% static 'js/posts.js' %}"></script>
