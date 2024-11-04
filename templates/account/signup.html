@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 {% load allauth i18n %}
+<!-- Page Title -->
 {% block title %}
 <title> Sign Up | Foresight</title>
 {% endblock title %}
-
+<!-- signup.html content starts here -->
 {% block content %}
 <container class="d-flex justify-content-center mt-5">
     <div class="row">
@@ -11,23 +12,27 @@
             <div class="card text-bg-dark mb-3 p-3 acc-panel">
                 <div class="row">
                     <div class="col">
+                        <!-- Form Heading -->
                         <h1>Sign Up</h1>
                     </div>
                 </div>
                 <hr>
                 <div class="row">
                     <div class="col">
+                        <!-- Link To Login Page -->
                         {% setvar link %}
                         <a href="{{ login_url }}">
                             {% endsetvar %}
                             {% setvar end_link %}
                         </a>
                         {% endsetvar %}
+                        <!-- Form Text -->
                         <p>
                             {% blocktranslate %}Already have an account? Then please
                             {{ link }}Login{{ end_link }}.{% endblocktranslate %}
                         </p>
                         {% url 'account_signup' as action_url %}
+                        <!-- Form Inputs -->
                         {% element form form=form method="post" action=action_url tags="entrance,signup" %}
                         {% slot body %}
                         {% csrf_token %}
@@ -36,6 +41,7 @@
                         {{ redirect_field }}
                         {% endslot %}
                         {% slot actions %}
+                        <!-- Form Button -->
                         <button type="submit" class="btn btn-dark"><i class="fa-solid fa-user-plus"></i> Sign Up
                         </button>
                         {% endslot %}
@@ -46,4 +52,5 @@
         </div>
     </div>
 </container>
+<!-- signup.html content starts here -->
 {% endblock content %}

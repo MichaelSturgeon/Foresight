@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 {% load allauth i18n %}
+<!-- Page Title -->
 {% block title %}
 <title> Logout | Foresight</title>
 {% endblock title %}
+<!-- logout.html content starts here -->
 {% block content %}
 <container class="d-flex justify-content-center mt-5">
     <div class="row">
@@ -10,12 +12,14 @@
             <div class="card text-bg-dark mb-3 p-3 acc-panel">
                 <div class="row">
                     <div class="col">
+                        <!-- Form Heading -->
                         <h1>Logout</h1>
                     </div>
                 </div>
                 <hr>
                 <div class="row">
                     <div class="col">
+                        <!-- Form Text -->
                         <p>
                             Are you sure you want to Logout?<br>We'll miss you while you're gone! <i
                                 class="fa-solid fa-heart-crack"></i>
@@ -27,6 +31,7 @@
                         {{ redirect_field }}
                         {% endslot %}
                         {% slot actions %}
+                        <!-- Form Submit Button -->
                         <button type="submit" class="btn btn-dark"><i class="fa-solid fa-lock"></i> Logout
                         </button>
                         {% endslot %}
@@ -38,3 +43,4 @@
     </div>
 </container>
 {% endblock content %}
+<!-- logout.html content starts here -->

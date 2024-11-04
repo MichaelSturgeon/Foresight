@@ -1,28 +1,32 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% load allauth account %}
+<!-- Page Title -->
 {% block title %}
 <title> Login | Foresight</title>
 {% endblock title %}
+<!-- login.html content starts here -->
 {% block content %}
-
 <container class="d-flex justify-content-center mt-5">
     <div class="row">
         <div class="col">
             <div class="card text-bg-dark mb-3 p-3 acc-panel">
                 <div class="row">
                     <div class="col">
+                        <!-- Form Heading -->
                         <h1>Login</h1>
                     </div>
                 </div>
                 <hr>
                 <div class="row">
                     <div class="col">
+                        <!-- Form Text -->
                         <p>
                             If you have not yet created an account, then please
                             <a href="{{ signup_url }}">sign up</a> first.
                         </p>
                         {% url 'account_login' as login_url %}
+                        <!-- Form Inputs -->
                         {% element form form=form method="post" action=login_url tags="entrance,login" %}
                         {% slot body %}
                         {% csrf_token %}
@@ -31,6 +35,7 @@
                         {{ redirect_field }}
                         {% endslot %}
                         {% slot actions %}
+                        <!-- Form Submit Button -->
                         <button type="submit" class="btn btn-dark"><i class="fa-solid fa-unlock"></i> Login
                         </button>
                         {% endslot %}
@@ -42,3 +47,4 @@
     </div>
 </container>
 {% endblock %}
+<!-- login.html content ends here -->
