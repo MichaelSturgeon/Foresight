@@ -79,9 +79,13 @@ def delete_post(request, pk):
 
 # Profile List View
 def profile_list(request):
+    # Paginate profile list
+    paginator = Paginator(Profile.objects.exclude(user=request.user), 12)
+    page_number = request.GET.get('page')
+    profiles = paginator.get_page(page_number)
+
     if request.user.is_authenticated:
 
-        profiles = Profile.objects.exclude(user=request.user)
         return render(request, 'social/profile_list.html', {"profiles":profiles})
 
     else:
@@ -92,7 +96,11 @@ def profile_list(request):
 # Profile Page View
 def profile_page(request, pk):
     if request.user.is_authenticated:
-        profile_posts = Post.objects.filter(user_id=pk).order_by("-created_on")
+        # Paginate profile posts
+        paginator = Paginator(Post.objects.filter(user_id=pk).order_by("-created_on"), 1)
+        page_number = request.GET.get('page')
+        profile_posts = paginator.get_page(page_number)
+
         profile_page = Profile.objects.get(user_id=pk)
         profile_user = Profile.objects.get(user__id=request.user.id)
         
