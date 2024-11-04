@@ -8,7 +8,15 @@ from .forms import PostForm, ProfileImageForm
 # Index View
 def home(request):
     """
-    Renders all approved post paginated across several pages.     
+    Renders all approved post paginated across several pages.
+    Related to :model:`social.Post`.
+    ***Context***
+    ``posts``            
+        An instance of :model:`social.Post`.
+    ``post_form``
+        An instance of :form:`social.PostForm`.
+    **Template**
+    :template:`social.index.html`.
     """
     # Paginate post list
     paginator = Paginator(Post.objects.all(), 10)
@@ -40,7 +48,15 @@ def home(request):
 
 # Edit Post Veiw
     """
-    Renders an instance of a post in form input waiting to be edited.     
+    Renders an instance of a post in form input waiting to be edited.
+    Related to :model:`social.Post`.
+    ***Context***
+    ``post``
+        An instance of :model:`social.Post`.
+    ``post_form``
+        An instance of :form:`social.PostForm`.
+    **Template**
+    :template:`social.index.html`. 
     """
 def edit_post(request, pk):
     if request.user.is_authenticated:
@@ -70,7 +86,14 @@ def edit_post(request, pk):
 # Delete Post Veiw
     """
     Removes the selected post form the database
-    and then reners a paginated list of posts.     
+    and then reners a paginated list of posts.
+    Related to :model:`social.Post`.
+    ***Context***
+    ``posts``            
+        An instance of :model:`social.Post`.
+    **Template**
+    :template:`social.index.html`.   
+    :template:`social.profile_page.html`.   
     """  
 def delete_post(request, pk):
     if request.user.is_authenticated:
@@ -93,7 +116,13 @@ def delete_post(request, pk):
 # Profile List View
 def profile_list(request):
     """
-    Renders a paginated list of profiles, excluding the current user.         
+    Renders a paginated list of profiles, excluding the current user.
+    Related to :model:`social.Profile`.
+    ***Context***
+    ``profiles``            
+        An instance of :model:`social.Profile`.
+    **Template**
+    :template:`social.profile_list.html`.    
     """
     # Paginate profile list
     paginator = Paginator(Profile.objects.exclude(user=request.user), 12)
@@ -113,7 +142,17 @@ def profile_list(request):
 def profile_page(request, pk):
     """
     Renders a paginated list of the users posts.
-    Allows users to upload a profile image.         
+    Allows users to upload a profile image.
+    Related to :model:`social.Profile`.
+    ***Context***
+    ``profile_post``            
+        An instance of a post submitted by the user :model:`social.Post`.
+    ``profile_page``
+        An instance of the users profile page :model:`social.Profile`.      
+    ``profile_image_form``
+        An instance of :form:`social.ProfileImageForm`.
+    **Template**
+    :template:`social.profile_page.html`.    
     """
     if request.user.is_authenticated:
         # Paginate profile posts
@@ -146,7 +185,15 @@ def profile_page(request, pk):
 # Like Post View
 def post_like(request, pk):
     """
-    Add or removes a "like" to a posts like counter.         
+    Add or removes a "like" to a posts like counter.
+    Related to :model:`social.Post`.
+    ***Context***
+    ``post``            
+        An instance of :model:`social.Post`.
+    **Template**
+    :template:`social.index.html`.         
+    :template:`social.profile_page.html`.         
+    :template:`social.edit_post.html`.         
     """
     if request.user.is_authenticated:
         post = get_object_or_404(Post, id=pk)
@@ -165,7 +212,14 @@ def post_like(request, pk):
 # Unfollow Profile View
 def unfollow(request, pk):
     """
-    Removes followers from the users 'follows' list.         
+    Removes followers from the users 'follows' list.
+    Related to :model:`social.Profile`.
+    **Context**
+    ``profile_page``            
+        An instance of :model:`social.Profile`.
+    **Template**
+    :template:`social.profile_page.html`.        
+    :template:`social.profile_list.html`.        
     """
     if request.user.is_authenticated:
         profile_page = Profile.objects.get(user_id=pk)
@@ -180,7 +234,13 @@ def unfollow(request, pk):
 
 # Follow Profile View
     """
-    Adds followers from the users 'follows' list.         
+    Adds followers from the users 'follows' list.
+    Related to :model:`social.Profile`.
+    **Context**
+    ``profile_page``            
+        An instance of :model:`social.Profile`.
+    **Template**
+    :template:`social.index.html`.     
     """
 def follow(request, pk):
     if request.user.is_authenticated:

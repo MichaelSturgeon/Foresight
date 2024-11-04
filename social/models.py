@@ -12,6 +12,7 @@ STATUS = ((0, "Draft"), (1, "Published"))
 class Post(models.Model):
     """
     Stores a instence of a post entry.
+    Related to :model:`auth.User`.
     """
     user = models.ForeignKey(User, related_name="posts", on_delete=models.DO_NOTHING)
     body = models.CharField(max_length=200)
@@ -32,6 +33,7 @@ class Post(models.Model):
 class Profile(models.Model):
     """
     Stores an instance of a created user profile.
+    Related to :model:`auth.User`.
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     follows = models.ManyToManyField("self", related_name="followed_by", symmetrical=False, blank=True)
