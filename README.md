@@ -55,7 +55,7 @@ Once the strategy was in place, I moved on to defining the scope of the project.
 ## Structure
 With clear scope established I turned my attention to the structure design of the project. This involved creating information architecture that organized content and features in a logical manner, making it easy for users to navigate the project. flowcharts were developed to visualize how users would interact with the system, ensuring that the structure supported intuitive navigation and efficient task completion. This dimension was critical in laying the groundwork for a seamless user experience. The flowchart below depicts the journey taken through the program when using the website.
 
-![Foresight Flowchart](/documentation/foresight-flowchart.png)
+![Foresight Flowchart](/documentation/foresight-flowchart-wf.png)
 
 - When a user initially logs into the site they will be directed to the home page.
 - Providing a user is logged in, they will have full access to the site, and will be presented with all navigational links.
@@ -67,39 +67,46 @@ With clear scope established I turned my attention to the structure design of th
 The skeleton plane focused on the layout and interface design, where I transferred the structural blueprint into tangible design elements. This included designing the visual hierarchy, interactive elements and overall aesthetics of the product. By considering usability principle and accessibility standards, I aimed to create an interface that was not only visually appealing but also functional and inclusive. This attention to detail in the skeleton phase was essential for fostering user engagement and satisfaction. 
 Balsamiq served as the tool for crafting all the wireframes for this project. Below, you can explore screenshots of the initial project design, which has largely retained its form in the final project, with some minor changes to streamline the appearance.
 
-![Foresight Login Page & Home Page on Mobile](/documentation/foresight-login-homepage-mob.png)
+![Foresight Login Page & Home Page on Mobile](/documentation/foresight-login-homepage-mob-wf.png)
 
-![Foresight Profile Page & Profile List on Mobile](/documentation/foresight-profilepage-profilelist-mob.png)
+![Foresight Profile Page & Profile List on Mobile](/documentation/foresight-profilepage-profilelist-mob-wf.png)
 
-![Foresight Login Page on PC](/documentation/foresight-login.png)
+![Foresight Login Page on PC](/documentation/foresight-login-wf.png)
 
-![Foresight Home Page on PC](/documentation/foresight-home.png)
+![Foresight Home Page on PC](/documentation/foresight-home-wf.png)
 
-![Foresight Profile Page on PC](/documentation/foresight-profilepage.png)
+![Foresight Profile Page on PC](/documentation/foresight-profilepage-wf.png)
 
-![Foresight Profile List on PC](/documentation/foresight-profilelist.png)
+![Foresight Profile List on PC](/documentation/foresight-profilelist-wf.png)
 
 ## Surface
 ### Features
+![Foresight Home Page Live Site](/documentation/foresight-homepage-live.png)
 - Navigation Bar: The navigation bar provides authenticated user with direct links to all site pages, streamlining the user journey, leading to effortless site engagement.
 
-- Paginated post list: The centrepiece of the website is the posts list, prominently displayed on the home page. Here users can explore an array of posts contributed by fellow site members, by using the ‘Next’ and ‘Previous’ buttons conveniently positions at the bottom of the page.
+- Update messages: A message will pop up on screen after the user takes an action, confirming their selections. Notifications will be shown for activities like logging in, deleting a post, and following another user.
 
 - Post creation form: At the top of the home page, just above the posts, there's a dedicated space where user can express their thoughts and ideas with other members of the site. Simply type in your message and hit the submit button to share your insight.
 
+![Foresight Home Page, Page Pagination Live Site](/documentation/foresight-homepage-pagepagination-live.png)
+- Paginated post list: The centrepiece of the website is the posts list, prominently displayed on the home page. Here users can explore an array of posts contributed by fellow site members, by using the ‘Next’ and ‘Previous’ buttons conveniently positions at the bottom of the page.
+
 - Like button: Each post includes a ‘Like’ button that users can click to express their appreciation for the content, signalling to the author that they found the post meaningful and valuably.
 
+![Foresight Delete Post Modal Live Site](/documentation/foresight-deletepost-live.png)
+![Foresight Edit Post Page Live Site](/documentation/foresight-editpost-live.png)
 - Post Edit/ Delete button: Users have the option to modify or delete their posts with ease by simply clicking on the designated button that corresponds with their desired action, allowing users to make adjustments to their content.
 
+![Foresight Profile Page Live Site](/documentation/foresight-profilepage-live.png)
 - Profile page: The profile page acts as a focal point for all thinks pertaining to the user. It displays a collection of the users posts, highlights a roster of followers, and profile the user is following. Moreover, users have the option to upload a profile picture, giving their page a personal flair that makes it distinctly their own.
 
 - Follow button: Each profile page features a Follow/ Unfollow button, giving you, the current logged-in user a way of staying connected with the author of your favourite posts. When the button is toggled the profile owner’s username will be added to list of other users that you have previously followed, over on your own profile page.
 
+![Foresight Profile List Live Site](/documentation/foresight-profilelist-live.png)
 - Profile list: The Socialize link in the navigation bar takes users to a comprehensive list of all Foresight profiles. Each profile card features a profile pictures, a clickable Username link to the respective profile, and a timestamp showing when the user was last active.
 
+![Foresight Profile List Live Site](/documentation/foresight-loginpage-live.png)
 - Login/ Register: The login portal offers secure and user friendly entry for registered users, enabling easy access to the site. Users can quickly log in with their credentials to explore various features. New users can register with Foresight by completing a brief form that includes, choosing a Username, providing a valid Email address for verification, and creating a secure Password.
-
-- Update messages: A message will pop up on screen after the user takes an action, confirming their selections. Notifications will be shown for activities like logging in, deleting a post, and following another user.
 
 ### Potential Future Features
 - Automated Post Censorship – Have post automatically checked for inappropriate language and replace offensive words with asterisk prior to being submitted to the database. Post will be automatically authorized, making for a more efficient and positive user experience.
