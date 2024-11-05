@@ -263,5 +263,8 @@ Navigate to the GitHub Repository you want to clone:
 `cloudinary.config(secure=True,)`
 
 - Thanks to the CI walkthrough project for providing me with the some solid starting block for this projects success. Some element reference in my own code include; The Navigation Bar and the Page Nav Buttons.
+
+- I have learnt a tremendous amount from reading the official django documentation. Specific areas of support include; Combining models and Form decoration -[djangoproject.com](https://www.djangoproject.com/) 
+
 # Acknowledgments
 The completion of this project would not have been possible without the support of my partner; the patience, motivation, and enthusiasm she offers is second to none!
