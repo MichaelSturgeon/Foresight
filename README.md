@@ -14,6 +14,8 @@
 **Acknowledgments**
 
 # Overview
+![Foresight Collage](/documentation/foresight-collage.png)
+
 Foresight is a free micro-blogging social networking application designed using Django. At its core Foresight allows individuals to exchange brief text messages, enabling them to share thoughts, ideas and updates in a concise manner. Users can create short posts that capture their insight or experience, making it easy for others to engage with their content.
 
 In addition to sharing their own messages, users can express their appreciation for the contribution of others by liking posts. This feature not only fosters a sense of community but also encourages positive interactions and feedback among users. By liking content, individuals can show support for their peers, highlight valuable insights and promote a culture of recognition and encouragement within the platform, leaving users with a positive user experience.
@@ -176,15 +178,27 @@ This project uses a Google font named Quicksand.
 | Cloudinary Images | Within Google Developer tools, the console displayed a warning message, explaining that the Cloudinary images being used were being displayed via an HTTP url, instead of HTTPS. | Within setting.py I configured the URLs being used, and forced Cloudinary to display images with the more secure HTTPS URL. The code for this fix is mentioned in the credits section. |
 | Favicon | The Google Developer tools were displaying warning message within the console, stating that the favicon manifest file could be found. | To solve this I removed a line of code within the head element of the base.html file requesting the favicon manifest data. |
 
-Below are the link to the images, detailing the validation process carried out.
+Below are the images, detailing the validation process carried out. All images show no errors found.
+
+### CSS Validation
 ![Foresight CSS Validation](/documentation/foresight-css-validation.png)
+
+### JS Validation
+![Foresight posts.js Validation](/documentation/foresight-posts.js-validation.png)
+![Foresight profiles.js Validation](/documentation/foresight-profiles.js-validation.png)
+
+### Python Validation
 ![Foresight Setting.py Validation](/documentation/foresight-setting.py-validated.png)
 ![Foresight Models.py Validation](/documentation/foresight-models.py-validated.png)
 ![Foresight Views.py Validation](/documentation/foresight-views.py-validated.png)
+
+### HTML Validation
 ![Foresight Homepage HTML Validation](/documentation/foresight-homepage-validation.png)
 ![Foresight Profile Page HTML Validation](/documentation/foresight-profilepage-validation.png)
 ![Foresight Homepage HTML Validation](/documentation/foresight-socializepage-validation.png)
 
+### Lighthous Score
+![Foresight Lighthouse Performance Score](/documentation/foresight-lighthouse-score.png)
 
 
 ## Mobile Devices Used For Testing Responsivity
