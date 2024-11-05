@@ -46,8 +46,8 @@
                     <!-- Following/ Followers Collapse Toggle -->
                     <div class="col-2 col-sm-1">
                         {% if profile_page.user == user %}
-                        <span data-bs-toggle="collapse" data-bs-target="#followsCollapse" aria-expanded="false"
-                            aria-controls="followsCollapse">
+                        <span role="navigation" data-bs-toggle="collapse" data-bs-target="#followsCollapse"
+                            aria-expanded="false" aria-controls="followsCollapse">
                             <button class="btn btn-dark" type="button" data-bs-toggle="tooltip" data-bs-placement="top"
                                 data-bs-title="Your Circle"><i
                                     class="fa-solid fa-people-group text-primary"></i></button>
@@ -209,7 +209,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <!-- Upload Button/ Form -->
-            <form action="" method="POST" enctype="multipart/form-data">
+            <form method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
                     {% csrf_token %}
                     {{ profile_image_form.as_p }}
