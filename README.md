@@ -52,7 +52,7 @@ Once the strategy was in place, I moved on to defining the scope of the project.
 - Provide users with a method to follow other site users activity.
 - Provide users with a way to show appreciation for posts.
 
-![Foresight Schema](/documentation/foresight-schema.png)
+![Foresight Schema](/documentation/foresight-schema-wf.png)
 
 ## Structure
 With clear scope established I turned my attention to the structure design of the project. This involved creating information architecture that organized content and features in a logical manner, making it easy for users to navigate the project. flowcharts were developed to visualize how users would interact with the system, ensuring that the structure supported intuitive navigation and efficient task completion. This dimension was critical in laying the groundwork for a seamless user experience. The flowchart below depicts the journey taken through the program when using the website.
