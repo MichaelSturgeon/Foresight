@@ -16,7 +16,9 @@
 # Overview
 Foresight is a free micro-blogging social networking application designed using Django. At its core Foresight allows individuals to exchange brief text messages, enabling them to share thoughts, ideas and updates in a concise manner. Users can create short posts that capture their insight or experience, making it easy for others to engage with their content.
 
-In addition to sharing their own messages, users can express their appreciation for the contribution of others by liking posts. This feature not only fosters a sense of community but also encourages positive interactions and feedback among users. By liking content, individuals can show support for their peers, highlight valuable insights and promote a culture of recognition and encouragement within the platform, leaving users with a positive user experience
+In addition to sharing their own messages, users can express their appreciation for the contribution of others by liking posts. This feature not only fosters a sense of community but also encourages positive interactions and feedback among users. By liking content, individuals can show support for their peers, highlight valuable insights and promote a culture of recognition and encouragement within the platform, leaving users with a positive user experience.
+
+Here's A Link To [Foresight](https://pp4-foresight-fe6a36fe8027.herokuapp.com/) 
 # UX
 The five planes of user experience design (UXD) were critical in guiding this project, serving as a foundational framework that informed every decision made throughout its lifecycle. Each plane – strategy, scope, structure, skeleton, and surface – played a significant role in shaping the final product, ensuring that it not only met functional requirements but also resonated with the users.
 
@@ -48,8 +50,13 @@ Once the strategy was in place, I moved on to defining the scope of the project.
 - Provide users with a method to follow other site users activity.
 - Provide users with a way to show appreciation for posts.
 
+![Foresight Schema](/documentation/foresight-schema.png)
+
 ## Structure
 With clear scope established I turned my attention to the structure design of the project. This involved creating information architecture that organized content and features in a logical manner, making it easy for users to navigate the project. flowcharts were developed to visualize how users would interact with the system, ensuring that the structure supported intuitive navigation and efficient task completion. This dimension was critical in laying the groundwork for a seamless user experience. The flowchart below depicts the journey taken through the program when using the website.
+
+![Foresight Flowchart](/documentation/foresight-flowchart.png)
+
 - When a user initially logs into the site they will be directed to the home page.
 - Providing a user is logged in, they will have full access to the site, and will be presented with all navigational links.
 - From here users can navigate to one of the other pages; Profile, Socialize ect. Each time a user changes page, the site with check for authentication.
@@ -59,6 +66,18 @@ With clear scope established I turned my attention to the structure design of th
 
 The skeleton plane focused on the layout and interface design, where I transferred the structural blueprint into tangible design elements. This included designing the visual hierarchy, interactive elements and overall aesthetics of the product. By considering usability principle and accessibility standards, I aimed to create an interface that was not only visually appealing but also functional and inclusive. This attention to detail in the skeleton phase was essential for fostering user engagement and satisfaction. 
 Balsamiq served as the tool for crafting all the wireframes for this project. Below, you can explore screenshots of the initial project design, which has largely retained its form in the final project, with some minor changes to streamline the appearance.
+
+![Foresight Login Page & Home Page on Mobile](/documentation/foresight-login-homepage-mob.png)
+
+![Foresight Profile Page & Profile List on Mobile](/documentation/foresight-profilepage-profilelist-mob.png)
+
+![Foresight Login Page on PC](/documentation/foresight-login.png)
+
+![Foresight Home Page on PC](/documentation/foresight-home.png)
+
+![Foresight Profile Page on PC](/documentation/foresight-profilepage.png)
+
+![Foresight Profile List on PC](/documentation/foresight-profilelist.png)
 
 ## Surface
 ### Features
@@ -84,6 +103,11 @@ Balsamiq served as the tool for crafting all the wireframes for this project. Be
 
 ### Potential Future Features
 - Automated Post Censorship – Have post automatically checked for inappropriate language and replace offensive words with asterisk prior to being submitted to the database. Post will be automatically authorized, making for a more efficient and positive user experience.
+
+## Fonts
+This project uses a Google font named Quicksand.
+
+![Foresight Fonts](/documentation/foresight-fonts.png)
 
 # Tools Used
 - Balsamiq Wireframes - for creating wireframes & flowcharts
