@@ -8,6 +8,7 @@
 {% block content %}
 <!-- edit_post.html content starts here -->
 <div class="container mt-5">
+    <h1 class="hidden">Edit Post</h1>
     <div class="row">
         <div class="col-12">
             <!-- Post being edited -->
@@ -26,7 +27,7 @@
                     <!-- Post Author -->
                     <div class="col-10 text-center">
                         <a class="btn btn-dark " href="{% url 'profile_page' post.user.id %}">
-                            <h5 class="card-title text-capitalize font-weight-bold">{{post.user}}</h5>
+                            <p class="card-title text-capitalize font-weight-bold">{{post.user}}</p>
                         </a>
                     </div>
                 </div>
@@ -83,7 +84,7 @@
                     </div>
                     <!-- User Username -->
                     <div class="col-10 text-center">
-                        <h5 class="card-title text-capitalize font-weight-bold">{{ user.username }}</h5>
+                        <p class="card-title text-capitalize font-weight-bold heading">{{ user.username }}</p>
                     </div>
                     <div class="card-body">
                         <!-- Post Form -->

@@ -8,6 +8,7 @@
 {% block content %}
 <!-- index.html content starts here -->
 <div class="container mt-5">
+    <h1 class="hidden">Home</h1>
     <div class="row">
         <div class="col">
             <!-- Post Creation Form -->
@@ -31,7 +32,7 @@
                     </div>
                     <!-- User Username -->
                     <div class="col-10 text-center">
-                        <h5 class="card-title text-capitalize">{{ user.username }}</h5>
+                        <p class="card-title text-capitalize heading">{{ user.username }}</p>
                     </div>
                     <!-- Post Form -->
                     <div class="card-body">
@@ -75,7 +76,7 @@
                     <!-- Post Author -->
                     <div class="col-8 col-sm-9 text-center">
                         <a class="btn btn-dark " href="{% url 'profile_page' post.user.id %}">
-                            <h5 class="card-title text-capitalize ">{{post.user}}</h5>
+                            <p class="card-title text-capitalize heading">{{post.user}}</p>
                         </a>
                     </div>
                     <div class="col-2 col-sm-1">
@@ -138,7 +139,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content text-bg-dark">
             <div class="modal-header">
-                <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
+                <p class="modal-title heading" id="deleteModalLabel">Confirm Deletion</p>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <!-- Modal Text -->

@@ -141,7 +141,7 @@ p {
     line-height: 140%;
 }
 
-h1,h2,h3,h4,h5 {
+h1,h2,h3,h4,p {
     font-weight: bold;
 }
 
@@ -175,7 +175,7 @@ h4 {
     padding-bottom: 3px;
 }
 
-h5 {
+p {
     font-size: 0.625rem;
     margin: 1.5em 0 .5em 0;
     color: var(--body-quiet-color);

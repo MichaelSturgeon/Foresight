@@ -9,6 +9,7 @@
 <!-- profile_page.html content starts here -->
 {% if profile_page %}
 <div class="container mt-5">
+    <h1 class="hidden">Profile</h1>
     <div class="row">
         <div class="col">
             <!-- Profile Page Header -->
@@ -66,7 +67,7 @@
                         <!-- List of Follows -->
                         <div class="row">
                             <div class="col">
-                                <h5><i class="fa-solid fa-person-arrow-up-from-line"></i> Following</h5>
+                                <p class="heading"><i class="fa-solid fa-person-arrow-up-from-line"></i> Following</p>
                             </div>
                         </div>
                         <div class="row">
@@ -82,7 +83,8 @@
                         <!-- List of Following -->
                         <div class="row">
                             <div class="col">
-                                <h5><i class="fa-solid fa-person-arrow-down-to-line"></i> Followed By</h5>
+                                <p class="heading"><i class="fa-solid fa-person-arrow-down-to-line"></i> Followed By
+                                </p>
                             </div>
                         </div>
                         <div class="row">
@@ -118,7 +120,7 @@
                     <!-- Post Author -->
                     <div class="col-8 col-sm-9 text-center">
                         <a class="btn btn-dark" href="{% url 'profile_page' post.user.id %}">
-                            <h5 class="card-title text-capitalize ">{{post.user}}</h5>
+                            <p class="card-title text-capitalize heading">{{post.user}}</p>
                         </a>
                     </div>
                     <div class="col-2 col-sm-1">
@@ -183,7 +185,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content text-bg-dark">
             <div class="modal-header">
-                <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
+                <p class="modal-title heading" id="deleteModalLabel">Confirm Deletion</p>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <!-- Modal Text -->
@@ -205,7 +207,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content text-bg-dark">
             <div class="modal-header">
-                <h5 class="modal-title" id="profileImageModalLabel">Select A Profile Image To Upload</h5>
+                <p class="modal-title heading" id="profileImageModalLabel">Select A Profile Image To Upload</p>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <!-- Upload Button/ Form -->

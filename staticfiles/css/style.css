@@ -5,13 +5,21 @@ body {
     font-size: 15px;
 }
 
-h5,
+.heading {
+    font-weight: bold;
+}
+
+.heading,
 i {
     font-size: 18px;
 }
 
 .btn {
     font-size: 14px;
+}
+
+.hidden {
+    display: none;
 }
 
 /* base.html styles */
