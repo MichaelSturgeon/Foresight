@@ -8,19 +8,23 @@ from cloudinary.models import CloudinaryField
 # Post Status Variable
 STATUS = ((0, "Draft"), (1, "Published"))
 
+
 # Create post
 class Post(models.Model):
     """
     Stores a instence of a post entry.
     Related to :model:`auth.User`.
     """
-    user = models.ForeignKey(User, related_name="posts", on_delete=models.DO_NOTHING)
+    user = models.ForeignKey(
+        User, related_name="posts", on_delete=models.DO_NOTHING)
     body = models.CharField(max_length=200)
     created_on = models.DateTimeField(auto_now_add=True)
     likes = models.ManyToManyField(User, related_name="post_like", blank=True)
     status = models.IntegerField(choices=STATUS, default=0)
-    class Meta:
-        ordering = ["-created_on"]
+
+
+class Meta:
+    ordering = ["-created_on"]
 
     def like_counter(self):
         return self.likes.count()
@@ -36,11 +40,14 @@ class Profile(models.Model):
     Related to :model:`auth.User`.
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    follows = models.ManyToManyField("self", related_name="followed_by", symmetrical=False, blank=True)
+    follows = models.ManyToManyField(
+        "self", related_name="followed_by", symmetrical=False, blank=True)
     last_active = models.DateTimeField(User, auto_now=True)
     profile_image = CloudinaryField('image', default='placeholder')
+
     def __str__(self):
         return f"{self.user.username}"
+
 
 # Create A profile when a user signs-up & automatically follows own profile
 @receiver(post_save, sender=User)
