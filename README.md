@@ -89,7 +89,7 @@ Balsamiq served as the tool for crafting all the wireframes for this project. Be
 - Post creation form: At the top of the home page, just above the posts, there's a dedicated space where user can express their thoughts and ideas with other members of the site. Simply type in your message and hit the submit button to share your insight.
 
 ![Foresight Home Page, Page Pagination Live Site](/documentation/foresight-homepage-pagepagination-live.png)
-- Paginated post list: The centrepiece of the website is the posts list, prominently displayed on the home page. Here users can explore an array of posts contributed by fellow site members, by using the ‘Next’ and ‘Previous’ buttons conveniently positions at the bottom of the page.
+- Paginated post list: The centrepiece of the website is the posts list, prominently displayed on the home page. Here users can explore an array of posts contributed by fellow site members, by using the ‘Next’ and ‘Previous’ buttons conveniently positions at the bottom of the page. The pagination of page objects also features on the Socialize page.
 
 - Like button: Each post includes a ‘Like’ button that users can click to express their appreciation for the content, signalling to the author that they found the post meaningful and valuably.
 
@@ -98,6 +98,7 @@ Balsamiq served as the tool for crafting all the wireframes for this project. Be
 - Post Edit/ Delete button: Users have the option to modify or delete their posts with ease by simply clicking on the designated button that corresponds with their desired action, allowing users to make adjustments to their content.
 
 ![Foresight Profile Page Live Site](/documentation/foresight-profilepage-live.png)
+![Foresight Profile Page Image Upload Live Site](/documentation/foresight-uploadimage-live-mob.png)
 - Profile page: The profile page acts as a focal point for all thinks pertaining to the user. It displays a collection of the users posts, highlights a roster of followers, and profile the user is following. Moreover, users have the option to upload a profile picture, giving their page a personal flair that makes it distinctly their own.
 
 - Follow button: Each profile page features a Follow/ Unfollow button, giving you, the current logged-in user a way of staying connected with the author of your favourite posts. When the button is toggled the profile owner’s username will be added to list of other users that you have previously followed, over on your own profile page.
@@ -105,7 +106,8 @@ Balsamiq served as the tool for crafting all the wireframes for this project. Be
 ![Foresight Profile List Live Site](/documentation/foresight-profilelist-live.png)
 - Profile list: The Socialize link in the navigation bar takes users to a comprehensive list of all Foresight profiles. Each profile card features a profile pictures, a clickable Username link to the respective profile, and a timestamp showing when the user was last active.
 
-![Foresight Profile List Live Site](/documentation/foresight-loginpage-live.png)
+![Foresight Login Form Live Site](/documentation/foresight-loginpage-live.png)
+![Foresight Reset Password Form Live Site](/documentation/foresight-resetpassword-live-mob.png)
 - Login/ Register: The login portal offers secure and user friendly entry for registered users, enabling easy access to the site. Users can quickly log in with their credentials to explore various features. New users can register with Foresight by completing a brief form that includes, choosing a Username, providing a valid Email address for verification, and creating a secure Password.
 
 ### Potential Future Features
@@ -173,6 +175,17 @@ This project uses a Google font named Quicksand.
 | Post Delete Confirmation Button | When clicking on the confirm deletion button within the post delete modal, the primary key of the post wasn't being passed into the URL correctly due to there being too many spaces within the passed value. This resulted in the URL being unrecognised, and an error being raised.<br><br>Another issue with the delete button, is that the post ID would only be passed if the outer area of the bin icon button was clicked and not the icon itself. | Within the button element where the primary key is passed (As an attribute), I removed the excess spaces, and provided a line-break between other attributed within the buttons code to prevent a forced line-break between sensitive values, when saving the file.<br><br>To fix the second bug I simply passed the post ID though the icon as well as the outer area of the button. |
 | Cloudinary Images | Within Google Developer tools, the console displayed a warning message, explaining that the Cloudinary images being used were being displayed via an HTTP url, instead of HTTPS. | Within setting.py I configured the URLs being used, and forced Cloudinary to display images with the more secure HTTPS URL. The code for this fix is mentioned in the credits section. |
 | Favicon | The Google Developer tools were displaying warning message within the console, stating that the favicon manifest file could be found. | To solve this I removed a line of code within the head element of the base.html file requesting the favicon manifest data. |
+
+Below are the link to the images, detailing the validation process carried out.
+![Foresight CSS Validation](/documentation/foresight-css-validation.png)
+![Foresight Setting.py Validation](/documentation/foresight-setting.py-validated.png)
+![Foresight Models.py Validation](/documentation/foresight-models.py-validated.png)
+![Foresight Views.py Validation](/documentation/foresight-views.py-validated.png)
+![Foresight Homepage HTML Validation](/documentation/foresight-homepage-validation.png)
+![Foresight Profile Page HTML Validation](/documentation/foresight-profilepage-validation.png)
+![Foresight Homepage HTML Validation](/documentation/foresight-socializepage-validation.png)
+
+
 
 ## Mobile Devices Used For Testing Responsivity
 - iPhone 16 Pro Max
